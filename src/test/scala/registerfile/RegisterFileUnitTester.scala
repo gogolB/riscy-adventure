@@ -27,4 +27,34 @@ class RegisterFileTester(c: RegisterFile) extends PeekPokeTester(c) {
     expect(registerfile.io.R1, i+1)
   }
 
+  // Disable loading and check
+  poke(registerfile.io.LD, false)
+  step(1)
+
+  for(i <- 1 to 31) {
+    poke(registerfile.io.R1_SEL, i)
+    poke(registerfile.io.W_DATA, 50)
+    step(1)
+    expect(registerfile.io.R1, i+1)
+  }
+
+  // Now check if R2 is working.
+  for(i <- 1 to 31) {
+    poke(registerfile.io.R2_SEL, i)
+    step(1)
+    expect(registerfile.io.R2, i+1)
+  }
+
+  // Now check if R2 and R1 is working.
+  for(i <- 1 to 30 by 2) {
+    poke(registerfile.io.R1_SEL, i)
+    poke(registerfile.io.R2_SEL, i+1)
+    step(1)
+    expect(registerfile.io.R1, i+1)
+    expect(registerfile.io.R2, i+2)
+  }
+
+  poke(registerfile.io.R2_SEL, 31)
+  expect(registerfile.io.R2, 32)
+
 }
