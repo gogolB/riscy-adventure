@@ -102,7 +102,7 @@ class GCDTester extends ChiselFlatSpec {
     * Following examples show you how to turn on vcd for firrtl and treadle and how to turn it off for verilator
     */
 
-  "running with --generate-vcd-output on" should "create a vcd file from your test" in {
+  /*"running with --generate-vcd-output on" should "create a vcd file from your test" in {
     iotesters.Driver.execute(
       Array("--generate-vcd-output", "on", "--target-dir", "test_run_dir/make_a_vcd", "--top-name", "make_a_vcd"),
       () => new GCD
@@ -126,6 +126,6 @@ class GCDTester extends ChiselFlatSpec {
 
     new File("test_run_dir/make_no_vcd/make_a_vcd.vcd").exists should be (false)
 
-  }
+  }*/
 
 }
