@@ -5,7 +5,7 @@ import chisel3._
 
 object RegisterFileMain extends App {
   iotesters.Driver.execute(args, () => new RegisterFile) {
-    c => new RegisterFileTester(c)
+    c => new RegisterFileUnitTester(c)
   }
 }
 

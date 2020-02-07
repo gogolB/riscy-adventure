@@ -5,7 +5,7 @@ import chisel3._
 
 object MemoryMain extends App {
   iotesters.Driver.execute(args, () => new RAM(32768)) {
-    c => new MemoryTester(c)
+    c => new MemoryUnitTester(c)
   }
 }
 
