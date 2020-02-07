@@ -24,9 +24,10 @@ class RAM (n:Int) extends Module {
 
   when(io.WR) {
     mem.write(io.WR_ADDR, io.WR_DATA, io.MASK)
-    io.RD_DATA := DontCare
   }
   when(io.RD){
     io.RD_DATA := mem.read(io.RD_ADDR, io.RD)
+  }.otherwise{
+      io.RD_DATA := DontCare
   }
 }
